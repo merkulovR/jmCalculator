@@ -4,7 +4,7 @@ public enum RomanNumbers {
     CD(400), D(500), CM(900), M(1000);
 
     private final int value;
-    private final static RomanNumbers[] romanNumbers = RomanNumbers.values();
+    private final static RomanNumbers[] ROMAN_NUMBERS = RomanNumbers.values();
 
     RomanNumbers(int value) {
         this.value = value;
@@ -25,10 +25,10 @@ public enum RomanNumbers {
 
         StringBuilder roman = new StringBuilder();
 
-        for (int i = romanNumbers.length - 1; i >= 0; ) {
-            if (arabic >= romanNumbers[i].getValue()) {
-                roman.append(romanNumbers[i].name());
-                arabic -= romanNumbers[i].getValue();
+        for (int i = ROMAN_NUMBERS.length - 1; i >= 0; ) {
+            if (arabic >= ROMAN_NUMBERS[i].getValue()) {
+                roman.append(ROMAN_NUMBERS[i].name());
+                arabic -= ROMAN_NUMBERS[i].getValue();
             } else i--;
         }
 
@@ -50,10 +50,10 @@ public enum RomanNumbers {
         * с букв, которыми представлено римское число из enum
         * при совпадении добавляем значение данного числа в переменную arabic и обрезаем строку roman на количество символов римского числа, с которым мы только что сверились
         * если совпадения не происходит, спускаемся вниз по массиву romanNumbers[] к меньшему числу*/
-        for (int i = romanNumbers.length - 1; i >=0; ) {
-            if (roman.startsWith(romanNumbers[i].name())) {
-                arabic += romanNumbers[i].getValue();
-                roman = roman.substring(romanNumbers[i].name().length());
+        for (int i = ROMAN_NUMBERS.length - 1; i >=0; ) {
+            if (roman.startsWith(ROMAN_NUMBERS[i].name())) {
+                arabic += ROMAN_NUMBERS[i].getValue();
+                roman = roman.substring(ROMAN_NUMBERS[i].name().length());
             } else i--;
         }
 
